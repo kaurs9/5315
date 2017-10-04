@@ -2,27 +2,27 @@
   "data": [
     {
       "name": "Sunita Kaur",
-      "designation": "Scientist",
-      "salary": "$570,750",
-      "joining_date": "2012/10/12",
-      "office": "Seattle",
-      "extension": "0011"
+      "occupation": "Scientist",
+      "sold_price": "$70,750",
+      "purchase_date": "2012/10/12",
+      "location": "Seattle",
+      "cust_id": "0011"
     },
     {
       "name": "Jane Doe",
-      "designation": "Product Manager",
-      "salary": "$150,000",
-      "joining_date": "2016/12/02",
-      "office": "Dubai",
-      "extension": "0012"
+      "occupation": "Product Manager",
+      "sold_price": "150,000",
+      "purchase_date": "2016/12/02",
+      "location": "Dubai",
+      "cust_id": "0012"
     },
     {
       "name": "John Smith",
-      "designation": "Student",
-      "salary": "$10",
-      "joining_date": "2005/01/12",
-      "office": "San Francisco",
-      "extension": "0013"
+      "occupation": "Student",
+      "sold_price": "$10000",
+      "purchase_date": "2005/01/12",
+      "location": "San Francisco",
+      "cust_id": "0013"
     }
   ]
 }
