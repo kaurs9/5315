@@ -1,67 +1,92 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- Source: http://ecis.seattleu.edu/lee/5315/jsonxml/xmltable.html -->
+<!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1504.83">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
-    span.s1 {font-kerning: none}
-    table.t1 {width: 784.0px}
-    td.td1 {width: 117.6px; padding: 1.0px 1.0px 1.0px 1.0px}
-    td.td2 {width: 94.4px; padding: 1.0px 1.0px 1.0px 1.0px}
-    td.td3 {width: 95.2px; padding: 1.0px 1.0px 1.0px 1.0px}
-    td.td4 {width: 105.1px; padding: 1.0px 1.0px 1.0px 1.0px}
-    td.td5 {width: 192.4px; padding: 1.0px 1.0px 1.0px 1.0px}
-    td.td6 {width: 167.4px; padding: 1.0px 1.0px 1.0px 1.0px}
-  </style>
+  <!-- load jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- load datatables js library -->
+  <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+  <!-- link datatables css -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
+  <script type="text/javascript">
+    $(document).ready(function(){
+       var t = $('#chart').DataTable();
+       $.ajax({
+            type: "GET",
+            url: "car_catalog.xml", 
+            dataType: "xml",
+            success: function(xml) {  
+             $(xml).find('CD').each(function(){  
+              t.row.add( [
+                $(this).find('MAKE').text(),
+                $(this).find('MODEL').text(),
+                $(this).find('MILEAGE').text(),
+                $(this).find('DATE_SOLD').text(),
+                $(this).find('PRICE').text(),
+                $(this).find('YEAR').text()
+              ] ).draw( false );
+             });
+            }
+        });
+      });
+  </script>
 </head>
+
 <body>
-<table width="784.0" cellspacing="0" cellpadding="0" class="t1">
-  <tbody>
-    <tr>
-      <td valign="middle" class="td1">
-        <p class="p1"><span class="s1"><b>Make</b></span></p>
-      </td>
-      <td valign="middle" class="td2">
-        <p class="p1"><span class="s1"><b>Model</b></span></p>
-      </td>
-      <td valign="middle" class="td3">
-        <p class="p1"><span class="s1"><b>Mileage</b></span></p>
-      </td>
-      <td valign="middle" class="td4">
-        <p class="p1"><span class="s1"><b>Date Sold</b></span></p>
-      </td>
-      <td valign="middle" class="td5">
-        <p class="p1"><span class="s1"><b>Price</b></span></p>
-      </td>
-      <td valign="middle" class="td6">
-        <p class="p1"><span class="s1"><b>Year</b></span></p>
-      </td>
-    </tr>
-    <tr>
-      <td valign="middle" class="td1">
-        <p class="p1"><span class="s1"><b>Make</b></span></p>
-      </td>
-      <td valign="middle" class="td2">
-        <p class="p1"><span class="s1"><b>Model</b></span></p>
-      </td>
-      <td valign="middle" class="td3">
-        <p class="p1"><span class="s1"><b>Mileage</b></span></p>
-      </td>
-      <td valign="middle" class="td4">
-        <p class="p1"><span class="s1"><b>Date Sold</b></span></p>
-      </td>
-      <td valign="middle" class="td5">
-        <p class="p1"><span class="s1"><b>Price</b></span></p>
-      </td>
-      <td valign="middle" class="td6">
-        <p class="p1"><span class="s1"><b>Year</b></span></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <table id="chart" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Mileage</th>
+            <th>Date_Sold</th>
+            <th>Price</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Mileage</th>
+            <th>Date_Sold</th>
+            <th>Price</th>
+            <th>Year</th>
+        </tr>
+    </tfoot>
+  </table>
 </body>
 </html>
+
+
+<!-- ############################ -->
+<!-- Written in JavaScript Sample -->
+<!-- This is NOT used in the HTML -->
+<!-- ############################ -->
+<script>
+function loadXMLDoc() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      myFunction(xmlhttp);
+    }
+  }
+  xmlhttp.open("GET", "car_catalog.xml", true);
+  xmlhttp.send();
+}
+function myFunction(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table="<tr><th>Make</th><th>Model/th></tr>";
+  var x = xmlDoc.getElementsByTagName("CD");
+  for (i = 0; i <x.length; i++) { 
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("MAKE")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("MODEL")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>

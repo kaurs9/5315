@@ -1,4 +1,4 @@
-{/Users/Sunita/Downloads/hw1source 2/jsontable.html
+{
   "data": [
     {
       "name": “Jane Doe“,
@@ -6,7 +6,7 @@
       "phone number": “435-343-2322”,
       "last_purchase_date": "2010/01/01”,
       "location": “Istanbul”,
-      "cust_id": "8400”
+      "cust_id": "8400"
     },
     {
       "name": “John Smith“,
