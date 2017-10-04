@@ -13,17 +13,17 @@
        var t = $('#chart').DataTable();
        $.ajax({
             type: "GET",
-            url: "car_catalog.xml", 
+            url: "cd_catalog.xml", 
             dataType: "xml",
             success: function(xml) {  
              $(xml).find('CD').each(function(){  
               t.row.add( [
-                $(this).find('MAKE').text(),
-                $(this).find('MODEL').text(),
-                $(this).find('MILEAGE').text(),
-                $(this).find('DATE_SOLD').text(),
+                $(this).find('ARTIST').text(),
+                $(this).find('TITLE').text(),
+                $(this).find('YEAR').text(),
                 $(this).find('PRICE').text(),
-                $(this).find('YEAR').text()
+                $(this).find('COMPANY').text(),
+                $(this).find('COUNTRY').text()
               ] ).draw( false );
              });
             }
@@ -36,23 +36,23 @@
   <table id="chart" class="display" cellspacing="0" width="100%">
     <thead>
         <tr>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Mileage</th>
-            <th>Date_Sold</th>
-            <th>Price</th>
+            <th>Artist</th>
+            <th>Title</th>
             <th>Year</th>
+            <th>Price</th>
+            <th>Company</th>
+            <th>Country</th>
         </tr>
     </thead>
 
     <tfoot>
         <tr>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Mileage</th>
-            <th>Date_Sold</th>
-            <th>Price</th>
+            <th>Artist</th>
+            <th>Title</th>
             <th>Year</th>
+            <th>Price</th>
+            <th>Company</th>
+            <th>Country</th>
         </tr>
     </tfoot>
   </table>
@@ -72,19 +72,19 @@ function loadXMLDoc() {
       myFunction(xmlhttp);
     }
   }
-  xmlhttp.open("GET", "car_catalog.xml", true);
+  xmlhttp.open("GET", "cd_catalog.xml", true);
   xmlhttp.send();
 }
 function myFunction(xml) {
   var i;
   var xmlDoc = xml.responseXML;
-  var table="<tr><th>Make</th><th>Model/th></tr>";
-  var x = xmlDoc.getElementsByTagName("CAR");
+  var table="<tr><th>Artist</th><th>Title</th></tr>";
+  var x = xmlDoc.getElementsByTagName("CD");
   for (i = 0; i <x.length; i++) { 
     table += "<tr><td>" +
-    x[i].getElementsByTagName("MAKE")[0].childNodes[0].nodeValue +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
     "</td><td>" +
-    x[i].getElementsByTagName("MODEL")[0].childNodes[0].nodeValue +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
     "</td></tr>";
   }
   document.getElementById("demo").innerHTML = table;

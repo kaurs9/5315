@@ -7,25 +7,25 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
 </head>
 <body>
-    <table id="custTable" class="display" width="100%" cellspacing="0">
+    <table id="empTable" class="display" width="100%" cellspacing="0">
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Job Title</th>
-                <th>Phone Number</th>
-                <th>Purchase Date</th>
-                <th>Location</th>
-                <th>Cust ID</th>
+                <th>Designation</th>
+                <th>Office</th>
+                <th>Extension</th>
+                <th>Joining Date</th>
+                <th>Salary</th>
             </tr>
         </thead>
         <tfoot>
             <tr>
                 <th>Name</th>
-                <th>Job Title</th>
-                <th>Phone Number</th>
-                <th>Purchase Date</th>
-                <th>Location</th>
-                <th>Cust ID</th>
+                <th>Designation</th>
+                <th>Office</th>
+                <th>Extension</th>
+                <th>Joining Date</th>
+                <th>Salary</th>
             </tr>
         </tfoot>
     </table>
@@ -37,15 +37,15 @@
     
     <script type="text/javascript">
     $(document).ready(function() {
-        $('#custTable').dataTable({
-            "ajax": "custdata.js",
+        $('#empTable').dataTable({
+            "ajax": "empdata.js",
             "columns": [
                 {"data": "name"},
-                {"data": "job_title"},
-                {"data": "phone_number"},
-                {"data": "last_purchase_date"},
-                {"data": "location"},
-                {"data": "cust_id"}
+                {"data": "designation"},
+                {"data": "office"},
+                {"data": "extension"},
+                {"data": "joining_date"},
+                {"data": "salary"}
             ]
         });   
     });
