@@ -13,7 +13,7 @@
        var t = $('#chart').DataTable();
        $.ajax({
             type: "GET",
-            url: "cd_catalog.xml", 
+            url: "car_catalog.xml", 
             dataType: "xml",
             success: function(xml) {  
              $(xml).find('CAR').each(function(){  
@@ -72,7 +72,7 @@ function loadXMLDoc() {
       myFunction(xmlhttp);
     }
   }
-  xmlhttp.open("GET", "cd_catalog.xml", true);
+  xmlhttp.open("GET", "car_catalog.xml", true);
   xmlhttp.send();
 }
 function myFunction(xml) {
